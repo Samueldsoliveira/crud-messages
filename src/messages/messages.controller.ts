@@ -1,20 +1,23 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpCode,
   HttpStatus,
   Param,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 
 @Controller('messages')
 export class MessagesController {
   @HttpCode(HttpStatus.OK)
   @Get()
-  findAll() {
-    return 'This action returns all messages';
+  findAll(@Query() pagination: any) {
+    const { limit = 10, offset = 0 } = pagination;
+    return `This action returns all messages. Limit: ${limit}, Offset: ${offset}`;
   }
 
   @Get(':id')
@@ -33,5 +36,10 @@ export class MessagesController {
       id,
       ...body,
     };
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return `This action removes a message #${id}`;
   }
 }

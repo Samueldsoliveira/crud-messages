@@ -4,9 +4,11 @@
 ###
 # @name MessagesController
 GET {{baseUrl}}/messages/
-###
+?limit=10
+&offset=10
+### Retorna recado por ID
 GET {{baseUrl}}/messages/1/
-###
+### Cria um recado
 POST {{baseUrl}}/messages/
 Content-Type: application/json
 
@@ -14,7 +16,7 @@ Content-Type: application/json
   "message": "This is the message that i'm sending",
   "newKey": "other value"
 }
-###
+### Atualiza um recado
 PATCH {{baseUrl}}/messages/1/
 Content-Type: application/json
 
@@ -22,3 +24,5 @@ Content-Type: application/json
   "message": "This is the updated message",
   "update": true
 }
+###Apaga um recado
+DELETE {{baseUrl}}/messages/1/
