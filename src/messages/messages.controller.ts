@@ -10,36 +10,42 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
+import { MessagesService } from './messages.service';
+import { CreateMessagesDto } from './dto/create-messages.dto';
+import { UpdateMessagesDto } from './dto/update-messages.dto';
 
 @Controller('messages')
 export class MessagesController {
+  constructor(private readonly messagesService: MessagesService) {}
+
   @HttpCode(HttpStatus.OK)
   @Get()
   findAll(@Query() pagination: any) {
     const { limit = 10, offset = 0 } = pagination;
-    return `This action returns all messages. Limit: ${limit}, Offset: ${offset}`;
+    // return `This action returns all messages. Limit: ${limit}, Offset: ${offset}`;
+    return this.messagesService.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return `This action returns a message #${id}`;
+    return this.messagesService.findOne(id);
   }
 
   @Post()
-  create(@Body() body: any) {
-    return body;
+  create(@Body() createBodyDto: CreateMessagesDto) {
+    return this.messagesService.create(createBodyDto);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() body: any) {
-    return {
-      id,
-      ...body,
-    };
+  update(
+    @Param('id') id: string,
+    @Body() updateMessagesDto: UpdateMessagesDto,
+  ) {
+    return this.messagesService.update(id, updateMessagesDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return `This action removes a message #${id}`;
+    return this.messagesService.remove(id);
   }
 }
