@@ -13,22 +13,18 @@ POST {{baseUrl}}/messages/
 Content-Type: application/json
 
 {
-    "text": "New message",
-    "from": "Joana",
-    "to": "João",
-    "read": false,
-    "date": "2025-01-16T16:46:24.472Z"
-  }
+  "text": "New message",
+  "from": "Joana",
+  "to": "João"
+}
 ### Atualiza um recado
 PATCH {{baseUrl}}/messages/2/
 Content-Type: application/json
 
-{
-    "text": "Update message 2",
-    "from": "Joana",
-    "to": "João",
-    "read": false,
-    "date": "2025-01-16T16:46:24.472Z"
+  {
+    "text": "Update message 43",
+    "from": "Samuel",
+    "to": "João"
   }
 ###Apaga um recado
 DELETE {{baseUrl}}/messages/2/
