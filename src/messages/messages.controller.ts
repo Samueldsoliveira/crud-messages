@@ -39,7 +39,7 @@ export class MessagesController {
 
   @Patch(':id')
   update(
-    @Param('id') id: string,
+    @Param('id', ParseIntPipe) id: number,
     @Body() updateMessagesDto: UpdateMessagesDto,
   ) {
     return this.messagesService.update(id, updateMessagesDto);

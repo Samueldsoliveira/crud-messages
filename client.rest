@@ -7,7 +7,7 @@ GET {{baseUrl}}/messages/
 ?limit=10
 &offset=10
 ### Retorna recado por ID
-GET {{baseUrl}}/messages/2/
+GET {{baseUrl}}/messages/4/
 ### Cria um recado
 POST {{baseUrl}}/messages/
 Content-Type: application/json
@@ -18,13 +18,13 @@ Content-Type: application/json
   "to": "João"
 }
 ### Atualiza um recado
-PATCH {{baseUrl}}/messages/2/
+PATCH {{baseUrl}}/messages/4/
 Content-Type: application/json
 
   {
     "text": "Update message 43",
     "from": "Samuel",
-    "to": "João"
+    "to": "faxina"
   }
 ###Apaga um recado
-DELETE {{baseUrl}}/messages/2/
+DELETE {{baseUrl}}/messages/3/
